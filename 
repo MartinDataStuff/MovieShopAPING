@@ -1,0 +1,169 @@
+[1mdiff --git a/WebAdmin/Views/Movies/Details.cshtml b/WebAdmin/Views/Movies/Details.cshtml[m
+[1mindex 3d17f1f..2c1c50b 100644[m
+[1m--- a/WebAdmin/Views/Movies/Details.cshtml[m
+[1m+++ b/WebAdmin/Views/Movies/Details.cshtml[m
+[36m@@ -10,6 +10,12 @@[m
+     <h4>Movie</h4>[m
+     <hr />[m
+     <dl class="dl-horizontal">[m
+[32m+[m[32m        <dd>[m
+[32m+[m[32m            <div class="embed-responsive embed-responsive-16by9">[m
+[32m+[m[32m                <iframe class="embed-responsive-item" src=@Model.Movie.TrailerUrl allowfullscreen></iframe>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m        </dd>[m
+[32m+[m
+         <dt>[m
+             @Html.DisplayNameFor(model => model.Movie.Title)[m
+         </dt>[m
+[36m@@ -43,14 +49,6 @@[m
+         </dd>[m
+ [m
+         <dt>[m
+[31m-            @Html.DisplayNameFor(model => model.Movie.TrailerUrl)[m
+[31m-        </dt>[m
+[31m-[m
+[31m-        <dd>[m
+[31m-            @Html.DisplayFor(model => model.Movie.TrailerUrl)[m
+[31m-        </dd>[m
+[31m-[m
+[31m-        <dt>[m
+             @Html.DisplayNameFor(model => model.Movie.Genre.Name)[m
+         </dt>[m
+ [m
+[1mdiff --git a/WebAdmin/Views/User/Index.cshtml b/WebAdmin/Views/User/Index.cshtml[m
+[1mindex f8da36b..7b7c63e 100644[m
+[1m--- a/WebAdmin/Views/User/Index.cshtml[m
+[1m+++ b/WebAdmin/Views/User/Index.cshtml[m
+[36m@@ -3,6 +3,9 @@[m
+ @{[m
+     ViewBag.Title = "Index";[m
+ }[m
+[32m+[m[32mvar{[m
+[32m+[m[32m    @Model.Count[m
+[32m+[m[32m}[m
+ [m
+ [m
+ <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">[m
+[36m@@ -12,19 +15,33 @@[m
+         <li data-target="#carousel-example-generic" data-slide-to="1"></li>[m
+         <li data-target="#carousel-example-generic" data-slide-to="2"></li>[m
+     </ol>[m
+[31m-    @if (Model.Any())[m
+[32m+[m[32m    @if (Model.Count >= 3)[m
+     {[m
+         <div class="carousel-inner" role="listbox">[m
+[31m-            @for (int i = 0; i < 3; i++)[m
+[31m-            {[m
+[31m-                Movie movie = Model[Model.Count - 1 - i];[m
+[31m-                <div class="item">[m
+[31m-                    <img src=@Html.DisplayNameFor(model => model[i].TrailerUrl) alt="SS"/>[m
+[31m-                    <div class="carousel-caption">[m
+[31m-                        @movie.Title;[m
+[31m-                    </div>[m
+[32m+[m[32m            <div class="item active">[m
+[32m+[m[32m                <a href="~/Movies/Details/@Model[Model.Count - 1 - 0].Id">[m
+[32m+[m[32m                    <img border="0" alt=@Model[Model.Count - 1 - 0].Title src=@Model[Model.Count - 1 - 0].ImageUrl>[m
+[32m+[m[32m                </a>[m
+[32m+[m[32m                <div class="carousel-caption">[m
+[32m+[m[32m                    @Model[Model.Count - 1 - 0].Title;[m
+                 </div>[m
+[31m-            }[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m            <div class="item">[m
+[32m+[m[32m                <a href="~/Movies/Details/@Model[Model.Count - 1 - 1].Id">[m
+[32m+[m[32m                    <img border="0" alt=@Model[Model.Count - 1 - 1].Title src=@Model[Model.Count - 1 - 1].ImageUrl>[m
+[32m+[m[32m                </a>[m
+[32m+[m[32m                <div class="carousel-caption">[m
+[32m+[m[32m                    @Model[Model.Count - 1 - 1].Title;[m
+[32m+[m[32m                </div>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m            <div class="item">[m
+[32m+[m[32m                <a href="~/Movies/Details/@Model[Model.Count - 1 - 2].Id">[m
+[32m+[m[32m                    <img border="0" alt=@Model[Model.Count - 1 - 2].Title src=@Model[Model.Count - 1 - 2].ImageUrl>[m
+[32m+[m[32m                </a>[m
+[32m+[m[32m                <div class="carousel-caption">[m
+[32m+[m[32m                    @Model[Model.Count - 1 - 2].Title;[m
+[32m+[m[32m                </div>[m
+[32m+[m[32m            </div>[m
+         </div>[m
+     }[m
+     else[m
+[36m@@ -32,50 +49,46 @@[m
+         <!-- Wrapper for slides -->[m
+         <div class="carousel-inner" role="listbox">[m
+             <div class="item active">[m
+[31m-                <img src="http://images.huffingtonpost.com/2016-04-01-1459488050-1567099-bvs.jpg" alt="BVsS" />[m
+[32m+[m[32m                <img src="http://images.huffingtonpost.com/2016-04-01-1459488050-1567099-bvs.jpg" alt="BVsS"/>[m
+                 <div class="carousel-caption">[m
+                     Superman vs Batman[m
+                 </div>[m
+             </div>[m
+             <div class="item">[m
+[31m-                <img src="http://i.imgur.com/Nv0d1Yt.jpg" alt="SS" />[m
+[32m+[m[32m                <img src="http://i.imgur.com/Nv0d1Yt.jpg" alt="SS"/>[m
+                 <div class="carousel-caption">[m
+                     Suicide squad[m
+                 </div>[m
+             </div>[m
+             <div class="item">[m
+[31m-                <img src="http://cdn.collider.com/wp-content/uploads/2015/07/deadpool-ryan-reynolds-brianna-hildebrand.jpeg" alt="dead" />[m
+[32m+[m[32m                <img src="http://cdn.collider.com/wp-content/uploads/2015/07/deadpool-ryan-reynolds-brianna-hildebrand.jpeg" alt="dead"/>[m
+                 <div class="carousel-caption">[m
+                     Deadpool[m
+                 </div>[m
+             </div>[m
+         </div>[m
+[31m-[m
+[31m-[m
+[31m-        <!-- Controls -->[m
+[31m-        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">[m
+[31m-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>[m
+[31m-            <span class="sr-only">Previous</span>[m
+[31m-        </a>[m
+[31m-        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">[m
+[31m-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>[m
+[31m-            <span class="sr-only">Next</span>[m
+[31m-        </a>[m
+[31m-[m
+     }[m
+[32m+[m[32m    <!-- Controls -->[m
+[32m+[m[32m    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">[m
+[32m+[m[32m        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>[m
+[32m+[m[32m        <span class="sr-only">Previous</span>[m
+[32m+[m[32m    </a>[m
+[32m+[m[32m    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">[m
+[32m+[m[32m        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>[m
+[32m+[m[32m        <span class="sr-only">Next</span>[m
+[32m+[m[32m    </a>[m
+[32m+[m[32m</div>[m
+ [m
+[31m-    @for (int i = 0; i < 3; i++)[m
+[31m-    {[m
+[31m-[m
+[31m-        <div class="row" style="overflow-scrolling: auto;overflow-x: visible">[m
+[31m-            @for (int j = 0; j < @Model.Count/3; j++)[m
+[31m-            {[m
+[31m-                <div class="col">[m
+[31m-                    <a href="~/Movies/Details/new { id=@Model[j].Id }">[m
+[31m-                        <img border="0" alt="W3Schools" src=@Html.DisplayNameFor(model => model[j].TrailerUrl) width="100" height="100">[m
+[31m-                    </a>[m
+[31m-                </div>[m
+[31m-            }[m
+[31m-        </div>[m
+[31m-    }[m
+[31m-</div>[m
+\ No newline at end of file[m
+[32m+[m[32m@for (int i = 0; i < 3; i++)[m
+[32m+[m[32m{[m
+[32m+[m[32m    <div class="row" style="overflow-scrolling: auto;">[m
+[32m+[m[32m        @for (int j = @Model.Count/3; j > -1; j--)[m
+[32m+[m[32m        {[m
+[32m+[m[32m            <div class="col-lg-2">[m
+[32m+[m[32m                <a href="~/Movies/Details/@Model[j+i].Id">[m
+[32m+[m[32m                    <img border="0" alt=@Model[j+i].Title src=@Model[j+i].ImageUrl width="100%" height="100%">[m
+[32m+[m[32m                </a>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m        }[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m}[m
+\ No newline at end of file[m

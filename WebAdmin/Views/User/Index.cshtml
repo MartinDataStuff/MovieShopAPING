@@ -1,0 +1,110 @@
+﻿@using MovieShopBE
+@model List<Movie>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+    @if (Model.Count >= 3)
+    {
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <a href="~/Movies/Details/@Model[Model.Count - 1 - 0].Id">
+                    <img border="0" alt=@Model[Model.Count - 1 - 0].Title src=@Model[Model.Count - 1 - 0].ImageUrl>
+                </a>
+                <div class="carousel-caption">
+                    @Model[Model.Count - 1 - 0].Title;
+                </div>
+            </div>
+            <div class="item">
+                <a href="~/Movies/Details/@Model[Model.Count - 1 - 1].Id">
+                    <img border="0" alt=@Model[Model.Count - 1 - 1].Title src=@Model[Model.Count - 1 - 1].ImageUrl>
+                </a>
+                <div class="carousel-caption">
+                    @Model[Model.Count - 1 - 1].Title;
+                </div>
+            </div>
+            <div class="item">
+                <a href="~/Movies/Details/@Model[Model.Count - 1 - 2].Id">
+                    <img border="0" alt=@Model[Model.Count - 1 - 2].Title src=@Model[Model.Count - 1 - 2].ImageUrl>
+                </a>
+                <div class="carousel-caption">
+                    @Model[Model.Count - 1 - 2].Title;
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="http://images.huffingtonpost.com/2016-04-01-1459488050-1567099-bvs.jpg" alt="BVsS"/>
+                <div class="carousel-caption">
+                    Superman vs Batman
+                </div>
+            </div>
+            <div class="item">
+                <img src="http://i.imgur.com/Nv0d1Yt.jpg" alt="SS"/>
+                <div class="carousel-caption">
+                    Suicide squad
+                </div>
+            </div>
+            <div class="item">
+                <img src="http://cdn.collider.com/wp-content/uploads/2015/07/deadpool-ryan-reynolds-brianna-hildebrand.jpeg" alt="dead"/>
+                <div class="carousel-caption">
+                    Deadpool
+                </div>
+            </div>
+        </div>
+    }
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+<hr />
+
+<div class="pre-scrollable">
+    @if (Model.Any())
+    {
+        int counter = Model.Count - 1;
+        
+        for (int i = 0; i < Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Model.Count) / 5.0)); i++)
+        {
+            <div class="row">
+                @for (int j = 6; j > 0; j--)
+                {
+                    if (counter != -1)
+                    {
+                        Movie movie = Model[counter];
+                        counter--;
+                        <h1></h1>
+                        <div class="col-lg-2">
+                            <a href="~/Movies/Details/@movie.Id">
+                                <img border="0" alt=@movie.Title src=@movie.ImageUrl width="100%" height="100px"/>
+                            </a>
+                            @Html.ActionLink("Add to Basket", "AddMovie", new { id = movie.Id }, new
+                       {
+                           @class = "btn btn-default"
+                       })
+                        </div>
+                    }
+                }
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,71 @@
+﻿@model MovieShopBE.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <div class="row">
+                <div class="col-lg-7">
+                    <iframe width="560" height="315" src=@Html.ValueFor(model => model.TrailerUrl) frameborder="0" allowfullscreen></iframe>
+                </div>
+                <div class="col-lg-1">
+                    <img border="0" alt=@Html.ValueFor(model => model.Title) src=@Html.ValueFor(model => model.ImageUrl) style="max-width: 420px; max-height: 315px" />
+                </div>
+            </div>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genres.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genres.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orders)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orders)
+        </dd>
+
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index" , "User")
+</p>

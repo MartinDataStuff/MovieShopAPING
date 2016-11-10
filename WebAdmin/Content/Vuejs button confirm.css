@@ -1,0 +1,40 @@
+﻿.btn,
+input[type='submit'].btn {
+  display: inline-block;
+  padding: .7em 1em;
+  background-color: #f2f2f2;
+  color: #fff;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+}
+.btn:not([disabled]):not(.btn--nohover):hover,
+input[type='submit'].btn:not([disabled]):not(.btn--nohover):hover {
+  color: #fff;
+  background-color: #101010;
+}
+.btn--red,
+input[type='submit'].btn--red {
+  background-color: #df0923;
+}
+.btn--gray,
+input[type='submit'].btn--gray {
+  background-color: #d5d5d5;
+}
+.btn--transparent,
+input[type='submit'].btn--transparent {
+  background-color: transparent;
+  color: #000;
+}
+.btn--transparent-white,
+input[type='submit'].btn--transparent-white {
+  background-color: transparent;
+  color: #fff;
+}
+
+#confirmbutton {
+  width: 100%;
+  flex: 1 1 auto;
+  text-align: center;
+  padding: 1em;
+}
