@@ -19,12 +19,14 @@ namespace RestAPIMovieShop.Controllers
         private IRepository<Addresses> db = new MovieShopDLLFacade().GetAddressRepository();
 
         // GET: api/Addresses
+        [Authorize]
         public List<Addresses> GetAddresses()
         {
             return db.ReadAll();
         }
 
         // GET: api/Addresses/5
+        [Authorize]
         [ResponseType(typeof(Addresses))]
         public IHttpActionResult GetAddresses(int id)
         {
@@ -38,6 +40,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // PUT: api/Addresses/5
+        [Authorize]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutAddresses(int id, Addresses addresses)
         {
@@ -71,6 +74,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // POST: api/Addresses
+        [Authorize]
         [ResponseType(typeof(Addresses))]
         public IHttpActionResult PostAddresses(Addresses addresses)
         {
@@ -85,6 +89,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // DELETE: api/Addresses/5
+        [Authorize]
         [ResponseType(typeof(Addresses))]
         public IHttpActionResult DeleteAddresses(int id)
         {
@@ -95,6 +100,7 @@ namespace RestAPIMovieShop.Controllers
             return Ok(addresses);
         }
 
+        [Authorize]
         private bool AddressesExists(int id)
         {
             return db.ReadAll().Count(e => e.Id == id) > 0;

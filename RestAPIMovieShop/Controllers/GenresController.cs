@@ -34,6 +34,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // PUT: api/Genres/5
+        [Authorize]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutGenre(int id, Genre genre)
         {
@@ -67,6 +68,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // POST: api/Genres
+        [Authorize]
         [ResponseType(typeof(Genre))]
         public IHttpActionResult PostGenre(Genre genre)
         {
@@ -81,6 +83,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // DELETE: api/Genres/5
+        [Authorize]
         [ResponseType(typeof(Genre))]
         public IHttpActionResult DeleteGenre(int id)
         {

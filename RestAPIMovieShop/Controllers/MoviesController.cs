@@ -35,6 +35,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // PUT: api/Movies/5
+        [Authorize]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutMovie(int id, Movie movie)
         {
@@ -69,6 +70,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // POST: api/Movies
+        [Authorize]
         [ResponseType(typeof(Movie))]
         public IHttpActionResult PostMovie(Movie movie)
         {
@@ -83,6 +85,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // DELETE: api/Movies/5
+        [Authorize]
         [ResponseType(typeof(Movie))]
         public IHttpActionResult DeleteMovie(int id)
         {

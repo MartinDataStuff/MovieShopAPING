@@ -34,6 +34,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // PUT: api/Orders/5
+        [Authorize]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrder(int id, Order order)
         {
@@ -67,6 +68,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // POST: api/Orders
+        [Authorize]
         [ResponseType(typeof(Order))]
         public IHttpActionResult PostOrder(Order order)
         {
@@ -81,6 +83,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // DELETE: api/Orders/5
+        [Authorize]
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)
         {

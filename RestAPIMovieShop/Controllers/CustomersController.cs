@@ -19,12 +19,14 @@ namespace RestAPIMovieShop.Controllers
         private IRepository<Customer> db = new MovieShopDLLFacade().GetCustomerRepository();
 
         // GET: api/Customers
+        [Authorize]
         public List<Customer> GetCustomers()
         {
             return db.ReadAll();
         }
 
         // GET: api/Customers/5
+        [Authorize]
         [ResponseType(typeof(Customer))]
         public IHttpActionResult GetCustomer(int id)
         {
@@ -38,6 +40,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // PUT: api/Customers/5
+        [Authorize]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCustomer(int id, Customer customer)
         {
@@ -71,6 +74,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // POST: api/Customers
+        [Authorize]
         [ResponseType(typeof(Customer))]
         public IHttpActionResult PostCustomer(Customer customer)
         {
@@ -85,6 +89,7 @@ namespace RestAPIMovieShop.Controllers
         }
 
         // DELETE: api/Customers/5
+        [Authorize]
         [ResponseType(typeof(Customer))]
         public IHttpActionResult DeleteCustomer(int id)
         {
@@ -95,6 +100,7 @@ namespace RestAPIMovieShop.Controllers
             return Ok(customer);
         }
 
+        [Authorize]
         private bool CustomerExists(int id)
         {
             return db.ReadAll().Count(e => e.Id == id) > 0;
